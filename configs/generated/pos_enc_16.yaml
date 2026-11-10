@@ -1,0 +1,40 @@
+experiment_name: pos_enc_16
+seed: 42
+dataset:
+  scene: lego
+  data_dir: data/lego
+  img_wh:
+  - 100
+  - 100
+  white_bkgd: true
+  val_skip: 8
+model:
+  num_layers: 8
+  hidden_dim: 256
+  skip_connect:
+  - 4
+  use_viewdirs: true
+  pos_enc_freqs: 16
+  dir_enc_freqs: 4
+sampling:
+  num_samples: 64
+  near: 2.0
+  far: 6.0
+  perturb: true
+training:
+  num_iters: 20000
+  batch_size: 1024
+  lr: 0.0005
+  lr_decay: 0.1
+  lr_decay_steps: 25000
+  checkpoint_interval: 5000
+  eval_interval: 5000
+  log_interval: 100
+  device: auto
+output:
+  checkpoint_dir: outputs/checkpoints/pos_enc_16
+  render_dir: outputs/renders/pos_enc_16
+  figures_dir: outputs/figures/pos_enc_16
+  metrics_dir: outputs/metrics/pos_enc_16
+  log_dir: logs/pos_enc_16
+name: pos_enc_16

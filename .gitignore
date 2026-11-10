@@ -1,0 +1,33 @@
+# Dataset files
+data/lego/
+data/nerf_synthetic/
+
+# Outputs
+outputs/checkpoints/*.pth
+outputs/renders/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+
+# Environment
+.env
+
+# Logs
+logs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

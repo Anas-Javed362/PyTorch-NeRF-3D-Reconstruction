@@ -1,0 +1,76 @@
+# NeRF Ablation Study Configurations
+# Each ablation varies one hyperparameter while keeping the rest at baseline values.
+
+base_config: configs/lego_baseline.yaml
+
+# ---------------------------------------------------------------------------
+# 1. Positional Encoding Frequency Ablation
+#    Varies pos_enc_freqs: [4, 10, 16]
+# ---------------------------------------------------------------------------
+pos_enc_ablation:
+  description: "Effect of positional encoding frequency on reconstruction quality"
+  vary: model.pos_enc_freqs
+  experiments:
+    - name: pos_enc_4
+      model:
+        pos_enc_freqs: 4
+      training:
+        num_iters: 20000
+
+    - name: pos_enc_10
+      model:
+        pos_enc_freqs: 10
+      training:
+        num_iters: 20000
+
+    - name: pos_enc_16
+      model:
+        pos_enc_freqs: 16
+      training:
+        num_iters: 20000
+
+# ---------------------------------------------------------------------------
+# 2. Number of Coarse Samples Ablation
+#    Varies sampling.num_samples: [32, 64, 128]
+# ---------------------------------------------------------------------------
+sampling_ablation:
+  description: "Effect of number of coarse ray samples on rendering quality and speed"
+  vary: sampling.num_samples
+  experiments:
+    - name: samples_32
+      sampling:
+        num_samples: 32
+      training:
+        num_iters: 20000
+
+    - name: samples_64
+      sampling:
+        num_samples: 64
+      training:
+        num_iters: 20000
+
+    - name: samples_128
+      sampling:
+        num_samples: 128
+      training:
+        num_iters: 20000
+
+# ---------------------------------------------------------------------------
+# 3. Training Budget Ablation
+#    Varies training.num_iters: [10000, 25000, 50000]
+# ---------------------------------------------------------------------------
+budget_ablation:
+  description: "Effect of training budget (number of iterations) on final quality"
+  vary: training.num_iters
+  experiments:
+    - name: budget_10k
+      training:
+        num_iters: 10000
+
+    - name: budget_25k
+      training:
+        num_iters: 25000
+
+    - name: budget_50k
+      training:
+        num_iters: 50000

@@ -1,0 +1,39 @@
+dataset:
+  data_dir: data/synthetic_smoke
+  img_wh:
+  - 16
+  - 16
+  scene: synthetic_smoke
+  val_skip: 1
+  white_bkgd: true
+experiment_name: smoke_test_run
+model:
+  dir_enc_freqs: 2
+  hidden_dim: 64
+  num_layers: 4
+  pos_enc_freqs: 4
+  skip_connect:
+  - 2
+  use_viewdirs: true
+output:
+  checkpoint_dir: outputs/checkpoints
+  figures_dir: outputs/figures
+  log_dir: logs
+  metrics_dir: outputs/metrics
+  render_dir: outputs/renders
+sampling:
+  far: 6.0
+  near: 2.0
+  num_samples: 16
+  perturb: true
+seed: 42
+training:
+  batch_size: 128
+  checkpoint_interval: 10
+  device: cpu
+  eval_interval: 10
+  log_interval: 5
+  lr: 0.001
+  lr_decay: 0.5
+  lr_decay_steps: 10
+  num_iters: 20
